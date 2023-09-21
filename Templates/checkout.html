@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html>
+  <head>
+    {% block content %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+	<style>
+
+		.product-img{
+			max-width:200px;
+			height:auto;
+		}
+
+	</style>
+
+  </head>
+  <body>
+    <div class="container">
+      <h1 style="font-family:times new roman; color:orange;"><b>Checkout</b></h1>
+      <hr>
+       
+          <h2 style="font-family:times new roman"> <b> Customer Details </b> </h2>
+          <form action='UserDetails' method='post'>
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="text" value={{request.session.Name}} class="form-control"  name="username" required>
+            </div>
+			<div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" value={{request.session.Email}} class="form-control" name="useremail" required>
+            </div>
+			<div class="form-group">
+              <label for="mobile">Mobile No:</label>
+              <input type="text" class="form-control" value={{request.session.Mobile}}  name="usermobile" pattern="[0-9]{10}" required>
+            </div>
+            <div class="form-group">
+              <label for="address">Address:</label>
+              <textarea class="form-control"  name="useraddress" required></textarea>
+            </div>
+          
+          <hr>
+		  
+          <div class="form-group">
+            <label for="payment-method">Payment Method:</label> 
+            <select class="form-control"  name="userpaymentmethod" required>
+              <option value="">Select Payment Method</option>
+              <option value="credit-card">Credit Card</option>
+              <option value="debit-card">Debit Card</option>
+              <option value="paypal">PayPal</option>
+			        <option value="Upi">UPI </option>
+            </select>
+          </div>
+           {% comment %} <a href="confirmorder/{{Result.UserID}}" class="btn btn-primary">Place Order</a> {% endcomment %}
+          <button type="submit" class="btn btn-primary float-right" href="/confirmorder">Place Order</button> 
+    			<br><br>
+          </form>
+        </div>
+      </div>
+    </div>
+	{% endblock %}
+  </body>
+</html>

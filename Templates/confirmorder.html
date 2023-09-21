@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html>
+  <head>
+    {% block content %}
+    
+    
+    <meta charset="UTF-8">
+    <title>Order Confirmation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      /* Global styles */
+      body {
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Container styles */
+      .container {
+        margin: 0 auto;
+        
+        
+      }
+
+      /* Heading styles */
+      h1 {
+        font-size: 32px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      /* Order details styles */
+      .order-details {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+
+      /* Order details table styles */
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      td, th {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: left;
+      }
+
+      th {
+        font-weight: bold;
+      }
+
+      /* Call to action button styles */
+      .cta-button {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 12px 24px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 0 auto;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+
+      /* Footer styles */
+      footer {
+        background-color: #ccc;
+        padding: 20px;
+        text-align: center;
+      }
+
+    </style>
+  </head>
+  <body>
+
+    <div class="container" style="max-width:600px">
+      <h1>Thank You For Your Order!</h1>
+      <div class="order-details">
+       <center> <h2>Order Details</h2> </center><hr>
+        <p><b>Name:</b> {{Result.UserName}}</p>
+        <p><b>Mobile No:</b> {{Result.UserMobile}}</p>
+        <p><strong>Delivery Address:</strong> {{Result.Address}}</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Price</th>
+              <th>Quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in AllCartDetails %}
+            <tr>
+              <td><b>{{i.ProductName}}</b></td>
+              {% if i.ProductOffer%}
+              <td>₹{{i.OfferPrice}}.00</td>
+              {% else %}
+              <td>₹{{i.ProductPrice}}.00</td>
+              {% endif %}
+              <td>{{i.TotalQantity}}</td>
+            </tr>
+            {% endfor %}
+            {% comment %} <tr>
+              <td>Order ID:</td>
+              <td></td>
+              <td></td>
+            </tr> 
+           
+
+            <tr>
+              <td colspan="1">Order Date:</td>
+              <td colspan="1" ></td>
+              <td></td>
+            </tr> {% endcomment %}
+            <tr>
+              <td colspan="1">Total Price:</td>
+              {% comment %} {% if request.session.ProductOffer%} {% endcomment %}
+              <td colspan="2"><b>₹{{TotalCartPrice}}.00</b></td>
+                {% comment %} {% else %}
+              <td colspan="2">₹{{request.session.TotalPrice}}.00</td>
+              {% endif %} {% endcomment %}
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <a href="/success/{{Result.UserID}}" class="cta-button float-right">Confirm Order</a><br><br><br>
+    </div>
+  </div>
+  
+	  
+	  {% endblock %}
+
+	  </body>
+    
+	  </html>

@@ -1,0 +1,192 @@
+<DOCTYPE html>
+    <html>
+      <head>
+        <title> Burger Point </title>
+        
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+          integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+          crossorigin="anonymous"
+        />
+  
+        <script
+          src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+          integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+          crossorigin="anonymous"
+        ></script>
+        <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+        crossorigin="anonymous"
+      ></script>
+
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link href='junk-food.png' rel='icon'>
+
+      
+
+      <style>
+        .product-img{
+          max-width:200px;
+          
+        }
+
+        html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.glow-on-hover {
+    width: 120px;
+    height: 40px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    font-family:times new roman;
+}
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.glow-on-hover:active {
+    color: #000
+}
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
+
+      </style>
+      </head>
+  
+      <body>
+        {% block content%}
+       
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="/"><b>BURGER POINT</b></a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="/about">About us</a>
+                </li>
+                {%if request.session.Email%}
+                <li class="nav-item">
+                  <a class="nav-link active" href="/profile">My Account</a>
+                </li>
+                {%endif%}
+               
+            </div>
+            {% if request.session.Name %}
+            <h3  style="color:white">Welcome {{request.session.Name}} </h3>
+            {%endif%}&nbsp; &nbsp;
+            
+            <div class="row ">
+              
+              <div class="col"><a class="clear-cart btn btn-danger float-right" style="margin-left:5px;" href='/clearcart'>Clear Cart </a>
+                
+                {% if request.session.TotalQantity%}
+                <button type="button" class="btn btn-primary float-right"  data-target="#cart">Cart (<span class="total-count">{{request.session.TotalQantity}}</span>)</button>
+                {% else %}
+                <button type="button" class="btn btn-primary float-right"  data-target="#cart">Cart (<span class="total-count">0</span>)</button>
+                {% endif%}
+              </div>
+             
+              
+              {% if request.session.Email %}
+             <a href="/logout_view"> <button class="glow-on-hover" type="button" href="/logout_view"> Logout </button></a>
+             {% else %}
+             <a href="/login"> <button class="glow-on-hover" type="button" href="/login"> Sign In </button></a>
+
+             {%endif%}
+          </div>
+         
+
+
+            {% comment %} <li class="nav-item px-3 text-uppercase mb-0 position-relative d-lg-flex">
+              <div id="cart" class="d-none"> {% endcomment %}
+            
+              </div>
+              
+
+              
+            </li>
+
+
+
+          </div>
+          
+        </nav>
+        <br />
+
+                
+        {% endblock %}
+
+    </body>
+    </html>

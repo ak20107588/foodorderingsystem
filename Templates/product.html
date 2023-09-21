@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html>
+{% block content %}
+<head>
+    <title> Burger Point </title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js" ></script>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+
+<link
+rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+crossorigin="anonymous"
+/>
+
+<script
+src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+crossorigin="anonymous"
+></script>
+<script
+src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+crossorigin="anonymous"
+></script>
+
+      <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+        crossorigin="anonymous"
+      ></script>
+
+
+    <style>
+
+        body {
+            padding-top: 5px;
+          }
+          
+          .show-cart li {
+            display: flex;
+          }
+          .card {
+            margin-bottom: 20px;
+            border-color:gray;
+          }
+          .card-img-top {
+            width: 200px;
+            height: 200px;
+            align-self: center;
+          }
+
+          
+      .wrapper{
+        overflow:hidden;
+      }
+      .wrapper img{
+        width:100%; height:100%;
+        transition:scale 400ms;
+        
+      }
+      .wrapper:hover img{   
+        rotate:6deg;
+        scale:120%;
+      }
+
+        </style>
+
+
+        <script>
+
+            // ************************************************
+// Shopping Cart API
+// ************************************************
+
+
+</head>
+
+<body>
+
+  
+
+
+
+{% include 'carosel.html' %}
+
+<!-- Main -->
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-4">
+        {% for i in Result %}
+      <div class="col mb-3">
+        <div class="wrapper">
+        <div class="card h-100 " >
+          
+  <img style='width:100%; height:55%' class="card-img-top" src={{i.ProductImage}} alt="Card image cap">
+  <div class="card-block">
+    <h4 class="card-title">{{i.ProductName}}</h4>
+    {% if i.ProductOffer%}
+    <p class="card-text"><b>Special Offer ₹{{i.OfferPrice}}</b></p>
+    {% else %}
+    <p class="card-text"><b>₹{{i.ProductPrice}} </b></p>
+    {% endif%}
+    <a href="cart/new/{{i.ProductID}}" data-name={{i.ProductName}}  data-price="0.5" class="add-to-cart btn btn-primary">Add to cart</a>
+  </div></div>
+</div>
+      </div>
+    
+    {% endfor %}
+
+ 
+    
+    </div>
+    </div> 
+  </div>
+
+</body>
+{% endblock%}
+</html>

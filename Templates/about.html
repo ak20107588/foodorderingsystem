@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - Burger Point</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+
+    <style>
+
+         
+      .wrapper{
+        overflow:hidden;
+      }
+      .wrapper img{
+        width:100%; height:100%;
+        transition:scale 400ms;
+        
+      }
+      .wrapper:hover img{   
+        
+        scale:120%;
+      }
+
+      .wrapper1{
+        overflow:hidden;
+      }
+      .wrapper1 img{
+        width:100%; height:100%;
+        transition:scale 400ms;
+        
+      }
+      .wrapper1:hover img{   
+        
+        scale:140%;
+      }
+
+    </style>
+  </head>
+  <body>
+   {% include 'navbar.html' %}
+
+    <!-- Main Content -->
+    <div class="container my-5">
+      <h1>About Us</h1>
+      <hr />
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Our Story</h2>
+          <p>
+            Burger Point was founded in 2010 with a simple mission: to serve
+            the best burgers in town. Our founder, John Doe, was a chef who
+            had a passion for creating delicious and innovative burgers using
+            locally sourced ingredients. He opened Burger Point with the
+            belief that a great burger should be made with high-quality
+            ingredients and cooked to perfection.
+          </p>
+          <p>
+            Today, Burger Point has become a beloved local institution, known
+            for its delicious burgers, friendly service, and welcoming
+            atmosphere. We continue to source our ingredients locally and
+            pride ourselves on serving the freshest, highest quality burgers
+            around.
+          </p>
+		  
+		  <p>At Burger Point, we offer a wide range of burgers to suit every taste. Whether you prefer a classic cheeseburger or something a little more adventurous, we have something for everyone. Our menu also includes delicious sides like crispy fries, onion rings, and creamy coleslaw.</p>
+        <p>We pride ourselves on providing a comfortable and welcoming environment for our customers. Our restaurant is clean, modern, and family-friendly, with plenty of seating for groups of all sizes. Our staff is friendly and always happy to help you choose the perfect burger.</p>
+ 
+        </div>
+        <div class="col-md-6">
+          <div class="wrapper">
+          <img
+            src="https://lh5.googleusercontent.com/p/AF1QipOWCpUn0mHc9yGd6F81teTd0xBeW9MuUTRWiTNX=w1440-h987-k-no"
+            alt="Burger Point"
+            class="img-fluid"
+          />
+          </div>
+        </div>
+      </div>
+      <hr />
+      <h2>Our Team</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <div class="wrapper1">
+            <img
+              src="https://10619-2.s.cdn12.com/rests/original/321_509974550.jpg"
+              alt="John Doe"
+              class="card-img-top"
+            />
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Sharad K </h5>
+			  </div>
+            </div>
+        </div>
+    </div>
+</div>
+			  
+
+              {% include 'footer.html' %}
+			  </body>
+			  </html>

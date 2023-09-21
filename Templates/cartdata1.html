@@ -1,0 +1,12 @@
+{% block content%}
+<form action='' method='post'>
+<td>
+    <b><input type="number" name="TotalQantity" id="quantity" min="1"  value="1" onchange="calculateTotal()"></b>
+</td>
+{% if Result.ProductOffer%}
+<td id="totalproductprice" name="TotalPrice" value="{{Result.OfferPrice}}">{{Result.OfferPrice}}</td>
+{% else %}
+<td id="totalproductprice" name="TotalPrice" value="{{Result.ProductPrice}}">{{Result.ProductPrice}}</td>
+</form>
+{% endif %}
+{% endblock%}

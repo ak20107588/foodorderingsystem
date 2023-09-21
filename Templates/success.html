@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Thank You for Your Order</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style type="text/css">
+		body {
+			{% comment %} font-family: Arial, sans-serif; {% endcomment %}
+			font-family: times new roman;
+			background-color: #f2f2f2;
+			color: #444;
+		}
+		.container {
+			margin: 0 auto;
+			max-width: 600px;
+			padding: 20px;
+			background-color: #fff;
+			box-shadow: 0px 0px 10px rgba(0,0,0,0.8);
+			border-radius: 5px;
+			text-align: center;
+		}
+		h1 {
+			font-size: 25px;
+			margin-bottom: 30px;
+		}
+		h4{
+			font-size:20px;
+		}
+		
+		p {
+			font-size: 20px;
+			margin-bottom: 20px;
+			line-height: 1.5;
+		}
+		a{
+			background-color: #4CAF50;
+			color: #fff;
+			font-size: 20px;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		a:hover {
+			background-color: #3e8e41;
+		}
+          
+          .success-icon {
+            text-align: center;
+            font-size: 48px;
+            height: 72px;
+            background: #359d00;
+            border-radius: 50%;
+            width: 72px;
+            height: 72px;
+            margin: 16px auto;
+            color: #fff;
+          }
+
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="paper">
+            <div class="main-contents">
+              <div class="success-icon">&#10004;</div>
+              <div class="success-title">
+                <strong><h4 style='color:#159B0F;font-size:30px;margin-bottom:25px;'>Order Placed.<h4></strong>
+              </div>
+		<form action='success'>
+		<h1>Thank You! <b style="font-family:italic; color:#EC6A0A; font-size:35px;">{{UserData.UserName}} </b> for Your Order</h1>
+		<h2> Your Order ID is: <b style='color:#EC6A0A;font-size:25px;'>#{{OrderData.OrderID}}.</b></h2>
+		<h3>Total Quantity of Product is <b style='color:#EC6A0A;font-size:25px;'> {{OrderData.TotalQuantity}} </b> & 
+		Total Price of Product is <b style='color:#EC6A0A; font-size:25px;'>₹ {{OrderData.TotalPrice}}. </b></h3>
+		<h4>Date of Order: <b style='color:#EC6A0A;font-size:25px;'> {{OrderData.OrderDate}}</b></b>
+		<p>Your order has been received and is currently being processed. You will receive an email confirmation shortly with your order details.</p>
+		<a href='/'> Continue Shopping</a>
+		</form>
+	</div>
+</body>
+</html>
